@@ -1,0 +1,39 @@
+﻿
+@{
+//コード生成に必要な一時変数をまとめて定義する
+
+  // クラス名
+  string TargetClassName = Model.TemplateFilesConfig.HeadPrefix + Model.SiteDefinition.SiteVariableName + Model.TemplateFilesConfig.EndPrefix;
+
+
+  // --- サービスが対象としているモデルクラス名を指定する
+
+  // クラス名
+  var ModelTemplateFilesConfig = Model.AllTemplateFilesConfig["Model"];
+
+  // モデルクラス名称
+  string ModelClassName = ModelTemplateFilesConfig.HeadPrefix + Model.SiteDefinition.SiteVariableName + ModelTemplateFilesConfig.EndPrefix;
+
+  // ユーザー拡張要素が定義されたクラス名
+  string ExtensionElementsClassName = ModelClassName + "ExtensionElements"; 
+
+}
+
+import { HackPleasanterApi_ServiceBase } from "@@yamada28go/pleasanter-web-script-type-helper";
+
+
+import { @Raw(ModelClassName) } from "../Models/@Raw(ModelClassName)";
+
+export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(ModelClassName)  > {
+  /** サイトID */
+  public static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
+
+  // 対象としているサイトITを取得する
+  override getSiteId(): number {
+    return @Raw(TargetClassName) .SITE_ID_CONSTANT;
+  }
+
+  override makeItemType(_rawData: RecordDataItems):  @Raw(ModelClassName) {
+    return new  @Raw(ModelClassName) (_rawData);
+  }
+}

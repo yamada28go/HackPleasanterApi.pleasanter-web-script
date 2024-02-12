@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GeneratorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InputFiles>
+    <SiteDefinitionFile>Sites.csv</SiteDefinitionFile>
+    <InterfaceDefinitionFile>Interface.csv</InterfaceDefinitionFile>
+    <Encoding>utf-8</Encoding>
+  </InputFiles>
+  <OutputConfig>
+    <OutputDirectory>Generated</OutputDirectory>
+  </OutputConfig>
+  <TemplateFiles>
+    <TemplateFiles>
+      <TemplateFileName>./Templates/ScriptTs/ServiceTemplate.txt</TemplateFileName>
+      <OutputSubdirectoryName>Services</OutputSubdirectoryName>
+      <HeadPrefix />
+      <EndPrefix>Service</EndPrefix>
+      <OutputExtension>ts</OutputExtension>
+      <Encoding>utf-8</Encoding>
+    </TemplateFiles>
+    <TemplateFiles>
+      <TemplateFileName>./Templates/ScriptTs/ModelTemplate.txt</TemplateFileName>
+      <OutputSubdirectoryName>Models</OutputSubdirectoryName>
+      <HeadPrefix />
+      <EndPrefix>Model</EndPrefix>
+      <OutputExtension>ts</OutputExtension>
+      <Encoding>utf-8</Encoding>
+    </TemplateFiles>
+  </TemplateFiles>
+  <CodeConfig>
+    <NameSpace />
+  </CodeConfig>
+</GeneratorConfig>
+

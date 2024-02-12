@@ -1,0 +1,5 @@
+/node_modules
+/src
+/global-types
+tsconfig.json
+develop-memo.md
