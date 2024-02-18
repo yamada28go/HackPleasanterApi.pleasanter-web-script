@@ -31,7 +31,7 @@
  *  https://github.com/yamada28go/HackPleasanterApi.pleasanter-web-script
  *
  *  [動作に必用なライブラリ]
- *  https://www.npmjs.com/package/@yamada28go/pleasanter-web-script-type-helper
+ *  https://www.npmjs.com/package/@@yamada28go/pleasanter-web-script-type-helper
  *
  */
 import { HackPleasanterApi_ServiceBase } from "@@yamada28go/pleasanter-web-script-type-helper";
