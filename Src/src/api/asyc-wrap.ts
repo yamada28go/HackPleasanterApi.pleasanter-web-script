@@ -101,6 +101,29 @@ export function apiUpdateAsync(
   });
 }
 
+/**
+ * PleasanterのAttachmentsDataに指定されたデータを取得します。
+ * @param info 取得対象となる添付ファイル情報
+ * @returns {Promise<ArrayBuffer>} 添付ファイルを読み込んだ情報
+ */
+export async function apiGetAttachmentsDataAsync(
+  info: AttachmentsData,
+): Promise<ArrayBuffer> {
+  const url = `${window.location.origin}/binaries/${info.Guid}/download`;
+
+  // GETリクエストでデータを取得
+  const response = await fetch(url);
+
+  // レスポンスが正常か確認
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+
+  // response.bodyを使用してストリームを取得
+  const buf = await response.arrayBuffer();
+  return buf;
+}
+
 // #endregion
 
 // #region user
@@ -314,7 +337,7 @@ export async function getGroupsAsync(
  * @param {number} id - 削除するグループのID。
  * @returns {Promise<void>} - 処理の成功または失敗を示すPromiseオブジェクト。
  */
-async function deleteGroupAsync(id: number): Promise<void> {
+export async function deleteGroupAsync(id: number): Promise<void> {
   return new Promise((resolve, reject) => {
     $p.apiGroupsDelete({
       id,
