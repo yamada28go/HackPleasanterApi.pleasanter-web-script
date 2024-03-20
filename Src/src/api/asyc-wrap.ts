@@ -101,6 +101,34 @@ export function apiUpdateAsync(
   });
 }
 
+/**
+ * 指定された添付ファイルデータに基づき、サーバーからバイナリデータを非同期で取得します。
+ *
+ * @async
+ * @function apiGetAttachmentsDataAsync
+ * @param {AttachmentsData} info - 添付ファイル情報。
+ * @returns {Promise<ArrayBuffer>} 取得したバイナリデータのArrayBuffer。レスポンスが正常でない場合はエラーをスローします。
+ * @throws {Error} レスポンスが正常でない場合にエラーをスローします。エラーメッセージにはHTTPステータスコードが含まれます。
+ */
+export async function apiGetAttachmentsDataAsync(
+  info: AttachmentsData,
+): Promise<ArrayBuffer> {
+  const url = `${window.location.origin}/binaries/${info.Guid}/download`;
+
+  // GETリクエストでデータを取得
+  const response = await fetch(url);
+
+  // レスポンスが正常か確認
+  if (!response.ok) {
+    throw new Error(`Error: ${response.status}`);
+  }
+
+  // response.bodyを使用してストリームを取得
+  const buf = await response.arrayBuffer();
+  return buf;
+}
+
+
 // #endregion
 
 // #region user
