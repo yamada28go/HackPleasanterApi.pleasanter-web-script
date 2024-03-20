@@ -144,28 +144,49 @@ export class @Raw(TargetClassName) {
             }
 
 
-                        @* CheckHash *@
+            @* CheckHash *@
             @foreach (var item in Model.ClassifiedInterface.CheckHash) {
 
 <text>
                     get </text> @Raw(item.VariableName) <text> (): boolean | undefined
                     {
-                        </text>
-                        <text>
+                        </text><text>
                         return this._rawData?.CheckHash?.@(item.ColumnName);
+                    }
+                    </text>
+<text>
+
+                    set </text> @Raw(item.VariableName) <text> (value: boolean | undefined) {
+                        </text><text>
+                             const tv = this._rawData.CheckHash || {};    
+                            tv.@(item.ColumnName) = value;
+                    }
+</text>
+
+            }
+
+
+            @* AttachmentsHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
+
+<text>
+                    get </text> @Raw(item.VariableName) <text> (): AttachmentsHash[] | undefined
+                    {
+                        </text><text>
+                        return this._rawData?.AttachmentsHash?.@(item.ColumnName);
                     }
                     </text>
 
 <text>
 
-                    set </text> @Raw(item.VariableName) <text> (value: boolean | undefined) {
-
-                                                </text>
-                        <text>
-                             const tv = this._rawData.CheckHash || {};    
+                    set </text> @Raw(item.VariableName) <text> (value: AttachmentsHash[] | undefined) {
+                        </text><text>
+                             const tv = this._rawData.AttachmentsHash || {};    
                             tv.@(item.ColumnName) = value;
                     }
-                            </text>
+</text>
+
+
 
             }
 
@@ -220,6 +241,4 @@ export class @Raw(TargetClassName) {
                 }
 
                 </text>
-
-
-            }
+}
