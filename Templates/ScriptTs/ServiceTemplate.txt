@@ -34,14 +34,14 @@
  *  https://www.npmjs.com/package/@@yamada28go/pleasanter-web-script-type-helper
  *
  */
-import { HackPleasanterApi_ServiceBase } from "@@yamada28go/pleasanter-web-script-type-helper";
+import { HackPleasanterApi_ServiceBase ,  ViewFilterKey} from "@@yamada28go/pleasanter-web-script-type-helper";
 
 
 import { @Raw(ModelClassName) } from "../Models/@Raw(ModelClassName)";
 
 export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(ModelClassName)  > {
   /** サイトID */
-  public static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
+  private static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
 
   // 対象としているサイトITを取得する
   override getSiteId(): number {
