@@ -1,6 +1,6 @@
 {
   "name": "@yamada28go/pleasanter-web-script-type-helper",
-  "version": "0.0.21",
+  "version": "0.0.24",
   "description": "pleasanter web api type helper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

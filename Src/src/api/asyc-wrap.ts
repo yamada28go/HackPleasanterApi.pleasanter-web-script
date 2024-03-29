@@ -128,7 +128,6 @@ export async function apiGetAttachmentsDataAsync(
   return buf;
 }
 
-
 // #endregion
 
 // #region user
@@ -342,7 +341,7 @@ export async function getGroupsAsync(
  * @param {number} id - 削除するグループのID。
  * @returns {Promise<void>} - 処理の成功または失敗を示すPromiseオブジェクト。
  */
-async function deleteGroupAsync(id: number): Promise<void> {
+export async function deleteGroupAsync(id: number): Promise<void> {
   return new Promise((resolve, reject) => {
     $p.apiGroupsDelete({
       id,

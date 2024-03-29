@@ -170,7 +170,7 @@ export class @Raw(TargetClassName) {
             @foreach (var item in Model.ClassifiedInterface.AttachmentsHash) {
 
 <text>
-                    get </text> @Raw(item.VariableName) <text> (): AttachmentsHash[] | undefined
+                    get </text> @Raw(item.VariableName) <text> (): AttachmentsData[] | undefined
                     {
                         </text><text>
                         return this._rawData?.AttachmentsHash?.@(item.ColumnName);
@@ -179,7 +179,7 @@ export class @Raw(TargetClassName) {
 
 <text>
 
-                    set </text> @Raw(item.VariableName) <text> (value: AttachmentsHash[] | undefined) {
+                    set </text> @Raw(item.VariableName) <text> (value: AttachmentsData[] | undefined) {
                         </text><text>
                              const tv = this._rawData.AttachmentsHash || {};    
                             tv.@(item.ColumnName) = value;

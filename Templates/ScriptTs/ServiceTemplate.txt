@@ -34,14 +34,14 @@
  *  https://www.npmjs.com/package/@@yamada28go/pleasanter-web-script-type-helper
  *
  */
-import { HackPleasanterApi_ServiceBase } from "@@yamada28go/pleasanter-web-script-type-helper";
+import { HackPleasanterApi_ServiceBase ,  ViewFilterKey} from "@@yamada28go/pleasanter-web-script-type-helper";
 
 
 import { @Raw(ModelClassName) } from "../Models/@Raw(ModelClassName)";
 
 export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(ModelClassName)  > {
   /** サイトID */
-  public static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
+  private static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
 
   // 対象としているサイトITを取得する
   override getSiteId(): number {
@@ -51,4 +51,58 @@ export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(
   override makeItemType(_rawData: RecordDataItems):  @Raw(ModelClassName) {
     return new  @Raw(ModelClassName) (_rawData);
   }
+
+              @* --- [Start] ClassHashの出力定義 [Start] --- *@
+            @foreach (var item in Model.ClassifiedInterface.ClassHash) {
+                    <text>
+                    public static getFilterKey_</text> @Raw(item.VariableName) <text> ()
+                    {
+                        </text>
+                        <text>
+                        return new ViewFilterKey<  @Raw(ModelClassName)  >("@(item.ColumnName)");
+                    }
+                    </text>
+            }
+            @* --- [End] ClassHashの出力定義 [End] --- *@
+
+
+            @* --- [Start] NumHashの出力定義 [Start] --- *@
+            @foreach (var item in Model.ClassifiedInterface.NumHash) {
+                    <text>
+                    public static getFilterKey_</text> @Raw(item.VariableName) <text> ()
+                    {
+                        </text>
+                        <text>
+                        return new ViewFilterKey<  @Raw(ModelClassName)  >("@(item.ColumnName)");
+                    }
+                    </text>
+            }
+            @* --- [End] NumHashの出力定義 [End] --- *@
+
+            @* --- [Start] DateHashの出力定義 [Start] --- *@
+            @foreach (var item in Model.ClassifiedInterface.DateHash) {
+                    <text>
+                    public static getFilterKey_</text> @Raw(item.VariableName) <text> ()
+                    {
+                        </text>
+                        <text>
+                        return new ViewFilterKey<  @Raw(ModelClassName)  >("@(item.ColumnName)");
+                    }
+                    </text>
+            }
+            @* --- [End] DateHashの出力定義 [End] --- *@
+
+
+            @* --- [Start] CheckHashの出力定義 [Start] --- *@
+            @foreach (var item in Model.ClassifiedInterface.CheckHash) {
+                    <text>
+                    public static getFilterKey_</text> @Raw(item.VariableName) <text> ()
+                    {
+                        </text>
+                        <text>
+                        return new ViewFilterKey<  @Raw(ModelClassName)  >("@(item.ColumnName)");
+                    }
+                    </text>
+            }
+            @* --- [End] CheckHashの出力定義 [End] --- *@
 }
