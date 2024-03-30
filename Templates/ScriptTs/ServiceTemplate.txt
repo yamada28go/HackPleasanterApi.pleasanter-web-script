@@ -41,7 +41,7 @@ import { @Raw(ModelClassName) } from "../Models/@Raw(ModelClassName)";
 
 export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(ModelClassName)  > {
   /** サイトID */
-  private static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
+  public static readonly SITE_ID_CONSTANT = @(Model.SiteDefinition.SiteId);
 
   // 対象としているサイトITを取得する
   override getSiteId(): number {

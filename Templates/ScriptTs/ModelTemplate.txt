@@ -30,6 +30,35 @@ export class @Raw(TargetClassName) {
   public constructor(public _rawData: RecordDataItems) {
   }
 
+
+              @* DescriptionHashの出力定義 *@
+            @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+
+<text>
+                    get </text> @Raw(item.VariableName) <text> (): string | undefined
+                    {
+                        </text>
+                        <text>
+                        return this._rawData?.DescriptionHash?.@(item.ColumnName);
+                    }
+                    </text>
+
+<text>
+
+                    set </text> @Raw(item.VariableName) <text> (value: string | undefined) {
+
+                                                </text>
+                        <text>
+                            if (!this._rawData.DescriptionHash) {
+                              this._rawData.DescriptionHash = {};
+                            }
+                            const tv = this._rawData.DescriptionHash;
+                            tv.@(item.ColumnName) = value;
+                    }
+                            </text>
+
+            }
+
             @* ClassHashの出力定義 *@
             @foreach (var item in Model.ClassifiedInterface.ClassHash) {
 
