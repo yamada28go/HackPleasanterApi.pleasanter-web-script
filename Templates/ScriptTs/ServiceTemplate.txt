@@ -52,6 +52,21 @@ export class @Raw(TargetClassName) extends HackPleasanterApi_ServiceBase<  @Raw(
     return new  @Raw(ModelClassName) (_rawData);
   }
 
+              @* --- [Start] DescriptionHashの出力定義 [Start] --- *@
+            @foreach (var item in Model.ClassifiedInterface.DescriptionHash) {
+                    <text>
+                    public static getFilterKey_</text> @Raw(item.VariableName) <text> ()
+                    {
+                        </text>
+                        <text>
+                        return new ViewFilterKey<  @Raw(ModelClassName)  >("@(item.ColumnName)");
+                    }
+                    </text>
+            }
+            @* --- [End] DescriptionHashの出力定義 [End] --- *@
+
+
+
               @* --- [Start] ClassHashの出力定義 [Start] --- *@
             @foreach (var item in Model.ClassifiedInterface.ClassHash) {
                     <text>
